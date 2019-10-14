@@ -65,7 +65,7 @@ const expelStudent = () => {
     let exStudent = expelledStudent.value;
     console.log(exStudent);
     let domString = ''
-    const exStudentCard = houses['4'];
+    const exStudentCard = houses[4];
     console.log(exStudentCard);
         domString += `
         <div class="row">
