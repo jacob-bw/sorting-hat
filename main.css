@@ -20,8 +20,7 @@ body {
    color: silver;
 }
 
-
-.container {
-    justify-content: center;
-    flex-flow: row;
-  }
+.card-body {
+    padding: 15px;
+    border-color: palegoldenrod;
+}

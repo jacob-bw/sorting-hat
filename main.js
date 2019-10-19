@@ -23,52 +23,62 @@ const houses = [
         attribute: 'brave',
         number: '3',
         crest: 'https://vignette.wikia.nocookie.net/harrypotter/images/b/b1/Gryffindor_ClearBG.png/revision/latest/scale-to-width-down/350?cb=20190222162949'
+     },
+     {
+         name: 'Expelled',
+         punishment: 'Please turn in your wand for destruction',
+         img: 'https://images.vexels.com/media/users/3/132003/isolated/preview/a05496ffbb01a7f9b84cd0e6d8e5188e-sad-pumpkin-emoticon-by-vexels.png'
      }
 ];
 
-console.log(houses);
-
 const printToDom = (toPrint, divId) => {
     document.getElementById(divId).innerHTML = toPrint
-}
-
+};
 
 const sortingHat = () => {
     let firstYearName = document.getElementById('name-zone');
     let student = firstYearName.value;
-    console.log(student);
     let randomNumber = Math.floor(Math.random()*4);
-    console.log(randomNumber);
     let domString = ''
-    const studentCard = houses[randomNumber]
-    console.log(studentCard);
-//    domString += ` 
-//    <div class="card">
-//        <h2>Congratulations ${student}!</h2>
-//        <p> You are in ${studentCard.name} this means you are ${studentCard.attribute}.</p>
-//        <img src=${studentCard.crest} alt= '...' />
-//        <button id="expel-student">Expel</button>
-//    </div>
-//    `
-        domString += `
-        <div class="row">
-        <div class="col-sm-6">
-            <div class="card w-100">
-                <div class="card-body">
-                    <img src=${studentCard.crest} alt= '...' height="250" width="250" />
-                    <h5 class="card-title">Congratulations ${student}!</h5>
-                    <p>You are in ${studentCard.name} this means you are ${studentCard.attribute}.</p>
-                    <a id="expel" href="#" class="btn btn-dark">Expel</a>
-                </div>
+    const houseCard = houses[randomNumber]
+    
+    domString += `
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="card text-center w-100">
+            <div class="card-body">
+                <img src=${houseCard.crest} alt= '...' height="250" width="250" />
+                <h5 class="card-title" id="student-name">Congratulations ${student}!</h5>
+                <p>You are in ${houseCard.name} this means you are ${houseCard.attribute}.</p>
+                <div><button id="expel" href="#" class="btn btn-dark">Expel</button></div>
             </div>
         </div>
-        </div>
-        `
-printToDom(domString, 'student-zone')
-}
+    </div>
+    </div>
+    `;
+    
+    printToDom(domString, 'student-zone')
+};
 
-//const expelStudent = () => {}
-
+const expelStudent = () => {
+    let studentToExpel = document.getElementById('student-name');
+    console.log(studentToExpel);
+    let exStudent = studentToExpel.value;
+    const domString = `
+    <div class="row">
+    <div class="col-sm-6">
+    <div class="card text-center w-100">
+    <div class="card-body">
+    </div>
+    <img src=${houses[4].img} alt= '...' height="250" width="250" />
+    <div class="card-title">We're very disappointed in your behavior ${exStudent}. You've been expelled.</div>
+    <div>Please turn in your wand for destruction.</div>
+    </div>
+    </div>
+    </div>
+    `;
+    printToDom(domString, 'student-zone');
+};
 
 document.getElementById('sorter').addEventListener('click', sortingHat);
-//document.getElementById('expel-student').addEventListener('click', expelStudent);
+document.getElementById('student-zone').addEventListener('click', expelStudent);
