@@ -40,48 +40,45 @@ const sortingHat = () => {
     let student = firstYearName.value;
     let randomNumber = Math.floor(Math.random()*4);
     let domString = ''
-    const studentCard = houses[randomNumber]
+    const houseCard = houses[randomNumber]
     
     domString += `
     <div class="row">
     <div class="col-sm-6">
         <div class="card text-center w-100">
             <div class="card-body">
-                <img src=${studentCard.crest} alt= '...' height="250" width="250" />
-                <h5 class="card-title">Congratulations ${student}!</h5>
-                <p>You are in ${studentCard.name} this means you are ${studentCard.attribute}.</p>
-                <button id="expel" href="#" class="btn btn-dark">Expel</button>
+                <img src=${houseCard.crest} alt= '...' height="250" width="250" />
+                <h5 class="card-title" id="student-name">Congratulations ${student}!</h5>
+                <p>You are in ${houseCard.name} this means you are ${houseCard.attribute}.</p>
+                <div><button id="expel" href="#" class="btn btn-dark">Expel</button></div>
             </div>
         </div>
     </div>
     </div>
     `;
-
-printToDom(domString, 'student-zone')
+    
+    printToDom(domString, 'student-zone')
 };
 
 const expelStudent = () => {
-    let expelledStudent = document.getElementById('h5');
-    let exStudent = expelledStudent.value;
-    console.log(exStudent);
-    let domString = ''
-    const exStudentCard = houses[4];
-    console.log(exStudentCard);
-        domString += `
-        <div class="row">
-        <div class="col-sm-6">
-            <div class="card text-center w-100">
-                <div class="card-body">
-                    <img src=${exStudentCard.img} alt= '...' height="250" width="250" />
-                    <h5 class="card-title">We're very disappointed, ${exStudent}.</h5>
-                    <p>You have been ${exStudentCard.name}. ${exStudentCard.punishment}.</p>
-                </div>
-            </div>
-        </div>
-        </div>
-        `;
-printToDom(domString, 'ex-student-zone')
+    let studentToExpel = document.getElementById('student-name');
+    console.log(studentToExpel);
+    let exStudent = studentToExpel.value;
+    const domString = `
+    <div class="row">
+    <div class="col-sm-6">
+    <div class="card text-center w-100">
+    <div class="card-body">
+    </div>
+    <img src=${houses[4].img} alt= '...' height="250" width="250" />
+    <div class="card-title">We're very disappointed in your behavior ${exStudent}. You've been expelled.</div>
+    <div>Please turn in your wand for destruction.</div>
+    </div>
+    </div>
+    </div>
+    `;
+    printToDom(domString, 'student-zone');
 };
 
 document.getElementById('sorter').addEventListener('click', sortingHat);
-document.getElementById('expel').addEventListener('click', expelStudent);
+document.getElementById('student-zone').addEventListener('click', expelStudent);
