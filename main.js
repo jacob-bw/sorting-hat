@@ -45,10 +45,11 @@ const sortingHat = () => {
     domString += `
     <div class="row">
     <div class="col-sm-6">
-        <div class="card text-center w-100">
+        <div class="card text-center">
             <div class="card-body">
-                <img src=${houseCard.crest} alt= '...' height="250" width="250" />
-                <h5 class="card-title" id="student-name">Congratulations ${student}!</h5>
+                <img src=${houseCard.crest} alt= '...'/>
+                <h5>Congratulations</h5>
+                <h5 class="card-title" id="student-name">${student}!</h5>
                 <p>You are in ${houseCard.name} this means you are ${houseCard.attribute}.</p>
                 <div><button id="expel" href="#" class="btn btn-dark">Expel</button></div>
             </div>
@@ -66,11 +67,11 @@ const expelStudent = () => {
     let exStudent = studentToExpel.value;
     const domString = `
     <div class="row">
-    <div class="col-sm-6">
-    <div class="card text-center w-100">
+    <div class="col">
+    <div class="card">
     <div class="card-body">
     </div>
-    <img src=${houses[4].img} alt= '...' height="250" width="250" />
+    <img src=${houses[4].img} alt= '...'/>
     <div class="card-title">We're very disappointed in your behavior ${exStudent}. You've been expelled.</div>
     <div>Please turn in your wand for destruction.</div>
     </div>
